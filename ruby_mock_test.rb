@@ -1,5 +1,5 @@
 
-load 'ruby_intro_18fall.rb'
+load 'ruby_intro_Teamname_mjain6_kaacken2.rb'
 
 def scores
   correct = 0
