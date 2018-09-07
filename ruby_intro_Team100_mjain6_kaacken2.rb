@@ -143,6 +143,10 @@ class Book
     end
     # Splitting the input with decimal(.) point
     price_array = @price.to_s.split('.')
+    # .10 in ruby is treated as .1 so to make sure we have the correct values after the decimal place
+    if price_array[1].length == 1
+      price_array[1] << '0'
+    end
     #Checking if the price is equal 1 dollar
     if (price_array[0].to_i == 1)
       price_formatted = price_array[0].to_i.to_s + " dollar "
