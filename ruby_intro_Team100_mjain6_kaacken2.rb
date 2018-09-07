@@ -11,7 +11,7 @@
 #
 # Authors: Mohit Jain <mjain6@ncsu.edu>, Kevin Acken <kaacken2@ncsu.edu>
 # Date: September 14, 2018
-# Compiler: g++ on the NCSU Grendel Linux Cluster
+# Interpreter: ruby-2.4.4-p296
 # Version: 1.0
 # ===========================================================================
 
