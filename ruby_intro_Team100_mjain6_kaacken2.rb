@@ -119,10 +119,10 @@ end
 # Part 3
 
 class Book
-  # ADD YOUR CODE HERE
-  # Using ruby's predefined way to create setters and getters
+  # Using Ruby's predefined way to create setters and getters
   attr_accessor :name, :price
-  #Initialize name and price and check for nil and empty condition
+
+  # Initialize name and price and check for nil and empty condition
   def initialize(name, price)
     unless !(name.nil? || name.empty?)
       raise ArgumentError, 'Name cannot be nil or empty'
@@ -133,38 +133,42 @@ class Book
     @name = name
     @price = price
   end
-  
-  #Method for format price
+
   def formatted_price
     price_formatted = ''
-    #Rounding off the decimal point to 2
+
+    # Rounding off the decimal point to 2
     if !@price.integer?
       @price = @price.round(2)
     end
+
     # Splitting the input with decimal(.) point
     price_array = @price.to_s.split('.')
-    # .10 in ruby is treated as .1 so to make sure we have the correct values after the decimal place
+
+    # .10 in ruby is treated as .1, so make sure we have the correct values after the decimal place
     if price_array[1].length == 1
       price_array[1] << '0'
     end
-    #Checking if the price is equal 1 dollar
+
+    # Checking if the price is equal to 1 dollar
     if (price_array[0].to_i == 1)
       price_formatted = price_array[0].to_i.to_s + " dollar "
-      #Checking if the price more than 1 dollar
+      # Checking if the price is more than 1 dollar
     elsif (price_array[0].to_i > 1)
       price_formatted = price_array[0].to_i.to_s + " dollars "
     end
-    #No cents
+
+    # No cents
     if price_array[1].to_i == 0
       price_formatted = price_formatted + "only"
-      #1 cent
+      # 1 cent
     elsif price_array[1].to_i == 1
       if price_array[0].to_i != 0
         price_formatted = price_formatted + "and " + price_array[1].to_i.to_s + " cent only"
       elsif price_array[0].to_i == 0
         price_formatted = price_formatted + price_array[1].to_i.to_s + " cent only"
       end
-      #Greater than 1 cent
+      # Greater than 1 cent
     elsif price_array[1].to_i > 1
       if price_array[0].to_i == 0
         price_formatted = price_formatted + price_array[1].to_i.to_s + " cents only"
@@ -172,6 +176,8 @@ class Book
         price_formatted = price_formatted + "and " + price_array[1].to_i.to_s + " cents only"
       end
     end
+
+    # Return the formatted price
     price_formatted
   end
 end
