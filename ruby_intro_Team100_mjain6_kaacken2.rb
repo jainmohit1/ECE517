@@ -119,42 +119,41 @@ end
 # Part 3
 
 class Book
-  # ADD YOUR CODE HERE
-   attr_accessor :name, :price
+  attr_accessor :name, :price
 
-    def initialize(name, price)
-      unless !(name.nil? || name.empty?)
-        raise ArgumentError, 'Name cannot be nil or empty'
-      end
-      unless !(price.nil? || price <= 0)
-        raise ArgumentError, 'Price cannot be nil or less than or equal to zero'
-      end
-      @name = name
-      @price = price
+  def initialize(name, price)
+    unless !(name.nil? || name.empty?)
+      raise ArgumentError, 'Name cannot be nil or empty'
     end
+    unless !(price.nil? || price <= 0)
+      raise ArgumentError, 'Price cannot be nil or less than or equal to zero'
+    end
+    @name = name
+    @price = price
+  end
 
-    def formatted_price
-      price_formatted = ''
-      if !@price.integer?
-        @price = @price.round(2)
-      end
-      price_array = @price.to_s.split('.')
-      if (price_array[0].to_i == 1)
-        price_formatted = price_array[0].to_i.to_s + " dollar "
-      elsif (price_array[0].to_i > 1)
-        price_formatted = price_array[0].to_i.to_s + " dollars "
-      end
-      if price_array[1].to_i == 0
-        price_formatted = price_formatted + "only"
-      elsif price_array[1].to_i == 1 && price_array[0].to_i != 0
-        price_formatted = price_formatted + "and " + price_array[1].to_i.to_s + " cent only"
-      elsif price_array[1].to_i == 1 && price_array[0].to_i == 0
-        price_formatted = price_formatted + price_array[1].to_i.to_s + " cent only"
-      elsif price_array[1].to_i > 1 && price_array[0].to_i == 0
-        price_formatted = price_formatted + price_array[1].to_i.to_s + " cents only"
-      elsif price_array[1].to_i > 1 && price_array[0].to_i != 0
-        price_formatted = price_formatted + "and " + price_array[1].to_i.to_s + " cents only"
-      end
-      price_formatted
+  def formatted_price
+    price_formatted = ''
+    if !@price.integer?
+      @price = @price.round(2)
     end
+    price_array = @price.to_s.split('.')
+    if (price_array[0].to_i == 1)
+      price_formatted = price_array[0].to_i.to_s + " dollar "
+    elsif (price_array[0].to_i > 1)
+      price_formatted = price_array[0].to_i.to_s + " dollars "
+    end
+    if price_array[1].to_i == 0
+      price_formatted = price_formatted + "only"
+    elsif price_array[1].to_i == 1 && price_array[0].to_i != 0
+      price_formatted = price_formatted + "and " + price_array[1].to_i.to_s + " cent only"
+    elsif price_array[1].to_i == 1 && price_array[0].to_i == 0
+      price_formatted = price_formatted + price_array[1].to_i.to_s + " cent only"
+    elsif price_array[1].to_i > 1 && price_array[0].to_i == 0
+      price_formatted = price_formatted + price_array[1].to_i.to_s + " cents only"
+    elsif price_array[1].to_i > 1 && price_array[0].to_i != 0
+      price_formatted = price_formatted + "and " + price_array[1].to_i.to_s + " cents only"
+    end
+    price_formatted
+  end
 end
